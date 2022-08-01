@@ -46,7 +46,7 @@ def options(opt):
 
     opt.load('trng4', tooldir='waftools')
     opt.load('libjson', tooldir='waftools')
-    opt.load('spdlog', tooldir='waftools')
+    # opt.load('spdlog', tooldir='waftools')
 
     cfg_options.add_option(
         '--openmp-root', action='store', default='/usr',
@@ -79,18 +79,19 @@ def configure(conf):
 
     conf.env.CXXFLAGS += ['-std=c++14', '-pipe']
 
-    conf.load('spdlog', tooldir='waftools')
+    # conf.load('spdlog', tooldir='waftools')
     conf.load('libjson', tooldir='waftools')
     conf.load('trng4', tooldir='waftools')
     conf.load('catch2', tooldir='waftools')
-    conf.load('cli', tooldir='waftools')
+    # conf.load('cli', tooldir='waftools')
 
-    conf.check_cxx(cxxflags=['-fopenmp'], ldflags=['-fopenmp','-lnuma'],
+    conf.check_cxx(cxxflags=['-fopenmp'], ldflags=['-fopenmp'],
                    libpath=['{0}'.format(conf.options.openmp_root)],
                    uselib_store='OpenMP')
 
     if conf.options.enable_mpi:
         conf.load('mpi', tooldir='waftools')
+
 
     conf.env.ENABLE_CUDA=False
     if conf.options.enable_cuda:
@@ -106,7 +107,6 @@ def configure(conf):
     env = conf.env
     conf.setenv('release', env)
     conf.env.append_value('CXXFLAGS', ['-O3', '-mtune=native'])
-
     conf.setenv('debug', env)
     conf.env.append_value('CXXFLAGS', ['-g', '-DDEBUG'])
     # if conf.env.CXX == 'clang++':

@@ -48,7 +48,6 @@
 #include <limits>
 #include <unordered_map>
 #include <vector>
-#include <numa.h>
 #include <math.h>
 #include "nlohmann/json.hpp"
 #include "trng/lcg64.hpp"
@@ -796,12 +795,9 @@ auto IMM3(const GraphTy &G, const ConfTy &CFG, double l, GeneratorTy &gen,
   double vm1;
   size_t num_threads = omp_get_max_threads();
   int rank = omp_get_thread_num();
-  int numa_node = numa_node_of_cpu(rank);
-  int task_nodes = numa_num_task_nodes();
   HuffmanTree* huffmanTree = createHuffmanTree(G.num_nodes());//
   process_mem_usage(vm1);
-  std::cout << "##imm3-huffman-tree: " << vm1 << " Mb on cpu("<< rank <<"/"<<num_threads<<")";
-  std::cout << "task-nodes="<< task_nodes << std::endl;
+  std::cout << "##imm3-huffman-tree: " << vm1 << " Mb on cpu("<< rank <<"/"<<num_threads<<")" << std::endl;
   std::vector<unsigned char*> compR;
   std::vector<uint32_t> compBytes;
   std::vector<uint32_t> codeCnt;

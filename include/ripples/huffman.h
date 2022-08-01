@@ -215,7 +215,7 @@ void initByRRRSets3(HuffmanTree* huffmanTree, std::vector<RRRset> &RRRsets) {
 	printf("2. insert internals, n_nodes=%d\n",huffmanTree->n_nodes);
 	
 	build_code(huffmanTree, huffmanTree->qq[1], 0, 0, 0);
-	printf("3. max-freq=%d, max_vtx=%d\n", max_freq, huffmanTree->maxvtx);
+	printf("3. max-freq=%zu, max_vtx=%d\n", max_freq, huffmanTree->maxvtx);
 		
 	free(freq);
 }
