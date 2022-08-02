@@ -34,7 +34,7 @@ Note that according to [OpenMP website](https://www.openmp.org/resources/openmp-
 ### Step 1: Install dependencies
 1. Install Python3, CMake, Git, Wget
 ```
-apt-get update && apt-get install -y --no-install-recommends \
+sudo apt-get update && apt-get install -y --no-install-recommends \
         build-essential cmake git wget python3.6 python3-dev \
         python3-pip python3-setuptools
 ```
