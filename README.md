@@ -38,15 +38,16 @@ Note that according to [OpenMP website](https://www.openmp.org/resources/openmp-
 ### Step 1: Install dependencies
 1. Install Python3, CMake, Git, Wget
 ```
-sudo apt-get update && apt-get install -y --no-install-recommends \
+sudo apt-get update && sudo apt-get install -y --no-install-recommends \
         build-essential cmake git wget python3.6 python3-dev \
-        python3-pip python3-setuptools
+        python3-pip python3-setuptools gcc
 ```
 
 2. Install Conan
 ```
 pip3 install --no-cache-dir --upgrade pip
 pip3 install --no-cache-dir conan==1.51.0
+export PATH=$PATH:~/.local/bin
 ```
 
 ### Step 2: Download HBMax code and example data
@@ -74,13 +75,14 @@ export EXECDIR=$HBMAX_ROOT/hbmax-pact/build/release/tools
 export task=dblp
 export ncpus=8
 export OMP_NUM_THREADS=$ncpus
-echo "======== begin "$task"-hbmax with "$ncpus" threads ============="
 $EXECDIR/imm -i $DATADIR/$task.txt -p -k 100 -d IC -e 0.2 -q 6  >> new_${task}_${ncpus}.txt
 $EXECDIR/oimm -i $DATADIR/$task.txt -p -k 100 -d IC -e 0.2 -q 1  >> old_${task}_${ncpus}.txt
-grep 'IMM Parallel :' new_${task}_${ncpus}.txt | awk '{print "hbmax   using:" $8}'
-grep 'IMM Parallel :' old_${task}_${ncpus}.txt | awk '{print "ripples using:" $8}'
-echo "======== finish "$task"-hbmax ================"
-rm new_${task}_${ncpus}.txt old_${task}_${ncpus}.txt
+echo "======== begin "$task"-hbmax with "$ncpus" threads =============" >> /tmp/result
+grep 'IMM Parallel :' new_${task}_${ncpus}.txt | awk '{print "hbmax   using:" $8}' >> /tmp/result
+grep 'IMM Parallel :' old_${task}_${ncpus}.txt | awk '{print "ripples using:" $8}' >> /tmp/result
+echo "======== finish "$task"-hbmax ================" >> /tmp/result
+cat /tmp/result
+rm new_${task}_${ncpus}.txt old_${task}_${ncpus}.txt  /tmp/result
 ```
 
 The output should be shown like below.
