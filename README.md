@@ -1,8 +1,12 @@
-Artifacts of PACT’22 paper “HBMAX: Optimizing Memory Efficiency for Parallel Influence
-Maximization on Multicore Architectures”
-*******
+# HBMax: Optimizing Memory Efficiency for Parallel Influence Maximization on Multicore Architectures
 
-This demo is to test our solution HBMax on [DBLP co-authorship network data](https://snap.stanford.edu/data/com-DBLP.html) with multiple threads and compare the execution time with the original solution Ripples. 
+By [Xinyu Chen](xinyu.chen1@wsu.edu), [Marco Minutoli](marco.minutoli@pnnl.gov), [Jiannan Tian](jiannan.tian@wsu.edu), [Mahantesh Halappanavar](mahantesh.halappanavar@pnnl.gov), [Ananth Kalyanaraman](ananth@wsu.edu), [Dingwen Tao](dingwen.tao@wsu.edu).
+
+HBMax is a memory-efficient optimization approach based on [Ripples](https://github.com/pnnl/ripples) for multi-threaded parallel influence maximization solution over large real-world social networks.
+
+This code is to demonstrate HBMax on [DBLP co-authorship network data](https://snap.stanford.edu/data/com-DBLP.html) and compare with the original solution Ripples. 
+
+*******
 
 ## Method 1: Use Docker Image (Recommended)
 
