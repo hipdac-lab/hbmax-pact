@@ -26,7 +26,7 @@ sudo docker run --rm xinyu2/hbmax /opt/experiments/compare.sh dblp 8
 ```
 The output should be shown like below. 
 
-<img width="352" alt="example" src="https://user-images.githubusercontent.com/5705572/182407194-92d2c1c9-77c5-4bd3-8451-e954216a629a.png">
+<img width="352" alt="example" src="https://user-images.githubusercontent.com/12724144/182713196-50e8de62-70e4-4ebb-ad14-40bfb15ab452.png">
 
 ## Method 2: Build From Source
 ### System Environment
@@ -87,4 +87,4 @@ rm new_${task}_${ncpus}.txt old_${task}_${ncpus}.txt  /tmp/result
 
 The output should be shown like below.
 
-<img width="352" alt="example" src="https://user-images.githubusercontent.com/5705572/182407194-92d2c1c9-77c5-4bd3-8451-e954216a629a.png">
+<img width="352" alt="example" src="https://user-images.githubusercontent.com/12724144/182713196-50e8de62-70e4-4ebb-ad14-40bfb15ab452.png">
